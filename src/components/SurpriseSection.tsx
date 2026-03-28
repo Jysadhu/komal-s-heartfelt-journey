@@ -20,7 +20,7 @@ const SurpriseSection = () => {
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.7 },
-        colors: ["#4a9e5f", "#d4a030", "#6bbf7a", "#2d6e3f", "#c084fc"],
+        colors: ["#d4af37", "#f9f2e3", "#b08d57", "#0a1f13", "#153d26"],
         shapes: [heartShape, "circle"],
       });
       confetti({
@@ -28,7 +28,7 @@ const SurpriseSection = () => {
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.7 },
-        colors: ["#4a9e5f", "#d4a030", "#6bbf7a", "#2d6e3f", "#c084fc"],
+        colors: ["#d4af37", "#f9f2e3", "#b08d57", "#0a1f13", "#153d26"],
         shapes: [heartShape, "circle"],
       });
       if (Date.now() < end) requestAnimationFrame(frame);
@@ -43,7 +43,7 @@ const SurpriseSection = () => {
 
   return (
     <section className="py-24 px-6 relative overflow-hidden" style={{ background: 'var(--gradient-section)' }}>
-      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-vine-gold/5 blur-[150px] rounded-full" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] radial-glow-gold pointer-events-none translate-x-1/4 -translate-y-1/4" />
       
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -53,7 +53,7 @@ const SurpriseSection = () => {
         className="max-w-2xl mx-auto text-center relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Sparkles className="w-4 h-4 text-vine-gold" />
+          <Sparkles className="w-5 h-5 text-wine-gold" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-10 italic">
@@ -64,9 +64,9 @@ const SurpriseSection = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
-          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-vine-leaf/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-vine-leaf/50 hover:bg-accent"
+          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-wine-rose/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground group"
         >
-          <Gift className="w-5 h-5 text-vine-gold" />
+          <Gift className="w-5 h-5 text-wine-gold md:group-hover:text-primary-foreground transition-colors" />
           Open Your Gift
         </motion.button>
       </motion.div>
@@ -80,14 +80,14 @@ const SurpriseSection = () => {
             className="fixed inset-0 z-50 flex items-center justify-center p-6"
             onClick={() => setIsOpen(false)}
           >
-            <div className="absolute inset-0 bg-background/80 backdrop-blur-md" />
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-xl" />
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-vine-leaf/20"
+              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-wine-rose/30 glow-effect"
             >
               <button
                 onClick={() => setIsOpen(false)}
@@ -99,15 +99,15 @@ const SurpriseSection = () => {
               <motion.div
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ repeat: Infinity, duration: 2 }}
-                className="text-5xl mb-6 inline-block"
+                className="text-5xl mb-6 text-primary animate-heartbeat inline-block"
               >
-                🌿
+                ❤️
               </motion.div>
 
-              <h3 className="font-script text-3xl md:text-4xl gradient-text mb-3">
+              <h3 className="font-script text-3xl md:text-4xl gradient-text mb-3 leading-relaxed py-2">
                 I Love You So Much
               </h3>
-              <p className="font-heading text-2xl text-foreground italic mb-2">
+              <p className="font-heading text-2xl text-foreground italic mb-2 leading-relaxed py-1">
                 Komal
               </p>
               <p className="font-body text-muted-foreground text-sm mt-4 font-light leading-relaxed">
@@ -121,7 +121,7 @@ const SurpriseSection = () => {
                     animate={{ y: [0, -8, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
                   >
-                    <Heart className="w-4 h-4 text-primary fill-current" />
+                    <Heart className="w-6 h-6 text-primary fill-current animate-heartbeat" />
                   </motion.div>
                 ))}
               </div>

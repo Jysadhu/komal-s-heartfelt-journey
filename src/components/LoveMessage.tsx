@@ -1,58 +1,90 @@
 import { motion } from "framer-motion";
-import { Feather } from "lucide-react";
+import { Heart, Quote } from "lucide-react";
 
 const LoveMessage = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
   return (
-    <section className="py-24 px-6 bg-background relative overflow-hidden">
-      <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-primary/5 blur-[150px] rounded-full" />
-      <div className="absolute top-4 left-4 text-3xl opacity-[0.06] animate-sway">🌿</div>
-      <div className="absolute bottom-8 right-8 text-4xl opacity-[0.06] animate-sway" style={{ animationDelay: '1s' }}>🍃</div>
-      
+    <section className="py-24 px-6 relative overflow-hidden flex justify-center items-center min-h-[90vh]">
+      {/* Background Ambience */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] radial-glow-primary pointer-events-none translate-x-1/3 -translate-y-1/3 opacity-50" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] radial-glow-rose pointer-events-none -translate-x-1/3 translate-y-1/3 opacity-50" />
+
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className="max-w-2xl mx-auto text-center relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full max-w-4xl relative z-10"
       >
-        <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Feather className="w-4 h-4 text-vine-gold" />
-        </div>
-        
-        <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-12 italic">
-          A Letter From <span className="gradient-text">My Heart</span>
-        </h2>
+        <div className="glass-card rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden shadow-2xl border border-primary/20 backdrop-blur-xl">
 
-        <div className="glass-card rounded-2xl p-8 md:p-12 text-left space-y-6 border-vine-leaf/10">
-          {[
-            "My dearest Komal,",
-            "On this special day, I want you to know just how deeply you've changed my world. Before you, my days were ordinary — but you painted them with colors I never knew existed. Every smile of yours is like a sunrise that fills my heart with warmth, every laugh of yours is the sweetest melody I've ever heard.",
-            "You are not just someone I love — you are my peace, my happiness, my reason to believe in beautiful things. When I'm with you, the whole world fades away and all that remains is the magic between us. You make the ordinary extraordinary, and the impossible feel within reach.",
-            "I promise to be there for you — in every storm and every sunshine, in every tear and every smile. You deserve the universe, and I'll spend every day trying to give you exactly that. Happy Birthday, my love. May this year bring you all the joy your beautiful soul deserves.",
-          ].map((text, i) => (
-            <motion.p
-              key={i}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + i * 0.15 }}
-              className={`font-body leading-relaxed text-base md:text-lg ${
-                i === 0 ? "text-vine-gold font-medium" : "text-foreground/80 font-light"
-              }`}
-            >
-              {text}
-            </motion.p>
-          ))}
+          {/* Subtle Quote Icon Background */}
+          <Quote className="absolute -top-4 -left-4 w-40 h-40 text-primary/[0.03] -rotate-12 pointer-events-none" />
+          <Quote className="absolute -bottom-4 -right-4 w-40 h-40 text-primary/[0.03] rotate-180 pointer-events-none" />
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 1 }}
-            className="font-script text-3xl md:text-4xl gradient-text text-right mt-8 pt-4 border-t border-border"
-          >
-            Forever yours ♥
-          </motion.p>
+          <div className="relative z-10 flex flex-col items-center text-center space-y-14">
+
+            {/* Greeting */}
+            <motion.div variants={itemVariants} className="flex flex-col items-center gap-4">
+              <span className="font-script text-6xl md:text-7xl gradient-text leading-relaxed py-2 px-4 drop-shadow-lg">
+                Komal
+              </span>
+              <Heart className="w-8 h-8 text-primary animate-pulse fill-primary/30 drop-shadow-[0_0_15px_rgba(225,29,72,0.5)]" />
+            </motion.div>
+
+            {/* Highlighted Prologue */}
+            <motion.div variants={itemVariants} className="relative">
+              <div className="absolute -inset-4 bg-primary/5 blur-xl rounded-full -z-10" />
+              <p className="font-heading text-2xl md:text-3xl text-primary/90 italic tracking-wide pb-4 drop-shadow-md">
+                તું છે એટલે હું છું… બસ એટલું simple છે ❤️
+              </p>
+            </motion.div>
+
+            {/* Letter Body */}
+            <div className="space-y-12 text-foreground/90 font-light leading-[2.5] text-xl md:text-2xl max-w-2xl mx-auto font-heading px-4">
+              <motion.p variants={itemVariants} className="hover:text-primary/80 transition-colors duration-500">
+                ખબર છે… <br />
+                હું પહેલા બધું manage કરી લેતો હતો એકલો.
+              </motion.p>
+
+              <motion.p variants={itemVariants} className="hover:text-primary/80 transition-colors duration-500">
+                પણ તું આવી ને… <br />
+                એવી રીતે life માં set થઈ ગઈ, <br />
+                કે હવે તારા વગર કંઈ manage કરવાનું મન જ નથી થતું.
+              </motion.p>
+
+              <motion.p variants={itemVariants} className="hover:text-primary/80 transition-colors duration-500">
+                તું સાથે હોય ને… <br />
+                તો life easy લાગી જાય છે… <br />
+                અને તું ના હોય… <br />
+                તો બધું થોડું heavy લાગી જાય છે ❤️
+              </motion.p>
+            </div>
+
+            {/* Closing */}
+            <motion.div variants={itemVariants} className="pt-12 w-full flex flex-col items-center gap-6 border-t border-primary/20 relative">
+              <div className="absolute -top-px left-1/2 -translate-x-1/2 w-48 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+              <span className="font-script text-4xl md:text-5xl gradient-text py-2 px-4">
+                Forever yours ♥
+              </span>
+            </motion.div>
+
+          </div>
         </div>
       </motion.div>
     </section>

@@ -57,7 +57,7 @@ const CountdownSection = () => {
 
   return (
     <section className="py-24 px-6 relative overflow-hidden" style={{ background: 'var(--gradient-section)' }}>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 blur-[150px] rounded-full" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[1000px] radial-glow-primary pointer-events-none -translate-y-1/2" />
       
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -67,7 +67,7 @@ const CountdownSection = () => {
         className="max-w-4xl mx-auto text-center relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Clock className="w-4 h-4 text-vine-gold" />
+          <Clock className="w-4 h-4 text-wine-gold" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-3 italic">
@@ -76,9 +76,9 @@ const CountdownSection = () => {
 
         <div className="flex items-center justify-center gap-6 mb-12 mt-6">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-vine-gold" />
+            <Calendar className="w-4 h-4 text-wine-gold" />
             <span className="font-body text-sm text-muted-foreground">
-              Born <span className="text-vine-gold font-medium">5th April 2006</span>
+              Born <span className="text-wine-gold font-medium">5th April 2006</span>
             </span>
           </div>
           <div className="w-px h-4 bg-border" />
@@ -95,11 +95,17 @@ const CountdownSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="glass-card rounded-2xl p-6 group hover:border-primary/20 transition-colors duration-500"
+              className="glass-card rounded-2xl p-6 group hover:border-wine-rose/50 hover:shadow-[0_0_25px_rgba(218,165,32,0.15)] transition-all duration-500"
             >
-              <span className="font-heading text-4xl md:text-5xl gradient-text block font-light">
+              <motion.span
+                key={block.value}
+                initial={{ rotateX: -90, opacity: 0 }}
+                animate={{ rotateX: 0, opacity: 1 }}
+                transition={{ duration: 0.5, type: "spring" }}
+                className="font-heading text-4xl md:text-5xl gradient-text block font-light drop-shadow-md origin-bottom"
+              >
                 {String(block.value).padStart(2, "0")}
-              </span>
+              </motion.span>
               <span className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mt-2 block">
                 {block.label}
               </span>
@@ -108,7 +114,7 @@ const CountdownSection = () => {
         </div>
 
         <p className="font-body text-xs text-muted-foreground tracking-wider uppercase flex items-center justify-center gap-2">
-          Until your next birthday <span>🌿</span>
+          Until your next birthday <span className="text-wine-rose">✨</span>
         </p>
       </motion.div>
     </section>

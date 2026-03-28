@@ -52,15 +52,13 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        vine: {
-          green: "hsl(var(--vine-green))",
-          leaf: "hsl(var(--vine-leaf))",
-          sage: "hsl(var(--vine-sage))",
-          moss: "hsl(var(--vine-moss))",
-          olive: "hsl(var(--vine-olive))",
-          cream: "hsl(var(--vine-cream))",
-          gold: "hsl(var(--vine-gold))",
-          bark: "hsl(var(--vine-bark))",
+        wine: {
+          red: "hsl(var(--wine-red))",
+          dark: "hsl(var(--wine-dark))",
+          rose: "hsl(var(--wine-rose))",
+          blush: "hsl(var(--wine-blush))",
+          gold: "hsl(var(--wine-gold))",
+          cream: "hsl(var(--wine-cream))",
         },
       },
       borderRadius: {
@@ -77,10 +75,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "float-leaf": {
-          "0%": { transform: "translateY(100vh) rotate(0deg) scale(0)", opacity: "0.5" },
-          "50%": { opacity: "0.3", transform: "translateY(50vh) rotate(180deg) scale(0.8)" },
-          "100%": { transform: "translateY(-10vh) rotate(360deg) scale(1)", opacity: "0" },
+        "float-circle": {
+          "0%": { transform: "translateY(100vh) scale(0)", opacity: "0.1" },
+          "50%": { opacity: "0.3", transform: "translateY(50vh) scale(1.5)" },
+          "100%": { transform: "translateY(-10vh) scale(1)", opacity: "0" },
         },
         "sway": {
           "0%, 100%": { transform: "rotate(-3deg)" },
@@ -91,8 +89,15 @@ export default {
           "100%": { strokeDashoffset: "0" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(145 45% 38% / 0.15)" },
-          "50%": { boxShadow: "0 0 50px hsl(145 45% 38% / 0.3)" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(43 74% 49% / 0.15)" },
+          "50%": { boxShadow: "0 0 40px hsl(43 74% 49% / 0.3)" },
+        },
+        "heartbeat": {
+          "0%, 100%": { transform: "scale(1)" },
+          "15%": { transform: "scale(1.1)" },
+          "30%": { transform: "scale(1)" },
+          "45%": { transform: "scale(1.1)" },
+          "60%": { transform: "scale(1)" },
         },
         "sparkle": {
           "0%, 100%": { opacity: "0.3", transform: "scale(1)" },
@@ -102,10 +107,11 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float-leaf": "float-leaf 10s ease-in infinite",
+        "float-circle": "float-circle 15s ease-in-out infinite",
         "sway": "sway 4s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "sparkle": "sparkle 2s ease-in-out infinite",
+        "heartbeat": "heartbeat 1.5s ease-in-out infinite",
       },
     },
   },

@@ -21,7 +21,7 @@ const BirthdayFooter = () => {
           </motion.span>
           by someone who loves you the most
         </p>
-        <p className="font-script text-vine-gold text-xl mt-4">
+        <p className="font-script text-vine-gold text-xl mt-4 leading-relaxed py-1">
           Happy Birthday Komal
         </p>
         <div className="divider-ornament max-w-[120px] mx-auto mt-4">
