@@ -43,7 +43,7 @@ const SurpriseSection = () => {
 
   return (
     <section className="py-24 px-6 relative overflow-hidden" style={{ background: 'var(--gradient-section)' }}>
-      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-romantic-gold/3 blur-[150px] rounded-full" />
+      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-romantic-gold/5 blur-[150px] rounded-full" />
       
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -57,17 +57,17 @@ const SurpriseSection = () => {
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-10 italic">
-          A Little <span className="gradient-text">Surprise</span>
+          એક નાનકડું <span className="gradient-text">સરપ્રાઈઝ</span>
         </h2>
 
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
-          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-romantic-gold/30 bg-muted/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-romantic-gold/50 hover:bg-muted"
+          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-romantic-gold/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-romantic-gold/50 hover:bg-accent"
         >
           <Gift className="w-5 h-5 text-romantic-gold" />
-          Open Your Gift
+          તારું ગિફ્ટ ખોલ
         </motion.button>
       </motion.div>
 
@@ -105,13 +105,13 @@ const SurpriseSection = () => {
               </motion.div>
 
               <h3 className="font-script text-3xl md:text-4xl gradient-text mb-3">
-                I Love You So Much
+                હું તને ખૂબ પ્રેમ કરું છું
               </h3>
               <p className="font-heading text-2xl text-foreground italic mb-2">
-                Komal
+                કોમલ
               </p>
               <p className="font-body text-muted-foreground text-sm mt-4 font-light leading-relaxed">
-                You mean everything to me. Happy Birthday, my love! ✨
+                તું મારા માટે બધું જ છે. જન્મદિવસ મુબારક, મારા પ્રેમ! ✨
               </p>
 
               <div className="flex justify-center gap-3 mt-8">

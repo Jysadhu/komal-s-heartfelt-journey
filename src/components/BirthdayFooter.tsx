@@ -19,10 +19,10 @@ const BirthdayFooter = () => {
           >
             <Heart className="w-4 h-4 text-primary fill-current" />
           </motion.span>
-          by someone who loves you the most
+          તને સૌથી વધુ પ્રેમ કરનાર દ્વારા
         </p>
         <p className="font-script text-romantic-gold text-xl mt-4">
-          Happy Birthday Komal
+          જન્મદિવસ મુબારક કોમલ
         </p>
         <div className="divider-ornament max-w-[120px] mx-auto mt-4">
           <span className="text-romantic-gold/50 text-[10px]">✦</span>
