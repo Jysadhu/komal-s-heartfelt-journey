@@ -6,10 +6,10 @@ import gallery4 from "@/assets/gallery-4.jpg";
 import { Camera } from "lucide-react";
 
 const images = [
-  { src: gallery1, alt: "Walking together", caption: "સાથે ચાલતાં ચાલતાં" },
-  { src: gallery2, alt: "Celebration together", caption: "ઉજવણીના સુંદર પળો" },
-  { src: gallery3, alt: "Together at sunset", caption: "તારી સાથે દરેક પળ ખાસ છે" },
-  { src: gallery4, alt: "Together always", caption: "હંમેશા તારી સાથે" },
+  { src: gallery1, alt: "Walking together", caption: "Walking through life with you" },
+  { src: gallery2, alt: "Celebration together", caption: "Every celebration is special" },
+  { src: gallery3, alt: "Together at sunset", caption: "You make everything beautiful" },
+  { src: gallery4, alt: "Together always", caption: "Forever by your side" },
 ];
 
 const PhotoGallery = () => {
@@ -25,11 +25,11 @@ const PhotoGallery = () => {
         className="max-w-5xl mx-auto relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Camera className="w-4 h-4 text-romantic-gold" />
+          <Camera className="w-4 h-4 text-vine-gold" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground text-center mb-14 italic">
-          પ્રેમની <span className="gradient-text">ગેલેરી</span>
+          Gallery of <span className="gradient-text">Love</span>
         </h2>
 
         <div className="grid grid-cols-2 gap-3 md:gap-4">
@@ -41,7 +41,7 @@ const PhotoGallery = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
               whileHover={{ scale: 1.03 }}
-              className="relative group rounded-xl overflow-hidden cursor-pointer border border-border hover:border-romantic-gold/30 transition-all duration-500"
+              className="relative group rounded-xl overflow-hidden cursor-pointer border border-border hover:border-vine-leaf/30 transition-all duration-500"
             >
               <img
                 src={img.src}

@@ -15,8 +15,8 @@ export default {
     extend: {
       fontFamily: {
         script: ["Great Vibes", "cursive"],
-        heading: ["Cormorant Garamond", "serif"],
-        body: ["Outfit", "sans-serif"],
+        heading: ["Playfair Display", "serif"],
+        body: ["DM Sans", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -52,15 +52,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        romantic: {
-          pink: "hsl(var(--romantic-pink))",
-          rose: "hsl(var(--romantic-rose))",
-          blush: "hsl(var(--romantic-blush))",
-          purple: "hsl(var(--romantic-purple))",
-          lavender: "hsl(var(--romantic-lavender))",
-          deep: "hsl(var(--romantic-deep))",
-          glow: "hsl(var(--romantic-glow))",
-          gold: "hsl(var(--romantic-gold))",
+        vine: {
+          green: "hsl(var(--vine-green))",
+          leaf: "hsl(var(--vine-leaf))",
+          sage: "hsl(var(--vine-sage))",
+          moss: "hsl(var(--vine-moss))",
+          olive: "hsl(var(--vine-olive))",
+          cream: "hsl(var(--vine-cream))",
+          gold: "hsl(var(--vine-gold))",
+          bark: "hsl(var(--vine-bark))",
         },
       },
       borderRadius: {
@@ -77,18 +77,22 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "float-heart": {
-          "0%": { transform: "translateY(100vh) scale(0)", opacity: "0.6" },
-          "50%": { opacity: "0.3" },
-          "100%": { transform: "translateY(-10vh) scale(1)", opacity: "0" },
+        "float-leaf": {
+          "0%": { transform: "translateY(100vh) rotate(0deg) scale(0)", opacity: "0.5" },
+          "50%": { opacity: "0.3", transform: "translateY(50vh) rotate(180deg) scale(0.8)" },
+          "100%": { transform: "translateY(-10vh) rotate(360deg) scale(1)", opacity: "0" },
+        },
+        "sway": {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        "grow-vine": {
+          "0%": { strokeDashoffset: "1000" },
+          "100%": { strokeDashoffset: "0" },
         },
         "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(345 60% 50% / 0.2)" },
-          "50%": { boxShadow: "0 0 50px hsl(345 60% 50% / 0.4)" },
-        },
-        "shimmer": {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
+          "0%, 100%": { boxShadow: "0 0 20px hsl(145 45% 38% / 0.15)" },
+          "50%": { boxShadow: "0 0 50px hsl(145 45% 38% / 0.3)" },
         },
         "sparkle": {
           "0%, 100%": { opacity: "0.3", transform: "scale(1)" },
@@ -98,9 +102,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "float-heart": "float-heart 8s ease-in infinite",
+        "float-leaf": "float-leaf 10s ease-in infinite",
+        "sway": "sway 4s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
-        "shimmer": "shimmer 3s ease-in-out infinite",
         "sparkle": "sparkle 2s ease-in-out infinite",
       },
     },

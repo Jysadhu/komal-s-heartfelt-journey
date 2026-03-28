@@ -1,44 +1,48 @@
 import { useEffect, useState } from "react";
 
-interface HeartParticle {
+interface LeafParticle {
   id: number;
   left: number;
   size: number;
   delay: number;
   duration: number;
   opacity: number;
+  emoji: string;
 }
 
+const leafEmojis = ["🍃", "🌿", "🌱", "🍂", "🌸"];
+
 const FloatingHearts = () => {
-  const [hearts, setHearts] = useState<HeartParticle[]>([]);
+  const [leaves, setLeaves] = useState<LeafParticle[]>([]);
 
   useEffect(() => {
-    const generated: HeartParticle[] = Array.from({ length: 12 }, (_, i) => ({
+    const generated: LeafParticle[] = Array.from({ length: 10 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      size: Math.random() * 14 + 8,
+      size: Math.random() * 14 + 10,
       delay: Math.random() * 12,
-      duration: Math.random() * 8 + 8,
-      opacity: Math.random() * 0.15 + 0.05,
+      duration: Math.random() * 8 + 10,
+      opacity: Math.random() * 0.12 + 0.04,
+      emoji: leafEmojis[i % leafEmojis.length],
     }));
-    setHearts(generated);
+    setLeaves(generated);
   }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-      {hearts.map((heart) => (
+      {leaves.map((leaf) => (
         <span
-          key={heart.id}
-          className="absolute text-primary animate-float-heart"
+          key={leaf.id}
+          className="absolute animate-float-leaf"
           style={{
-            left: `${heart.left}%`,
-            fontSize: `${heart.size}px`,
-            animationDelay: `${heart.delay}s`,
-            animationDuration: `${heart.duration}s`,
-            opacity: heart.opacity,
+            left: `${leaf.left}%`,
+            fontSize: `${leaf.size}px`,
+            animationDelay: `${leaf.delay}s`,
+            animationDuration: `${leaf.duration}s`,
+            opacity: leaf.opacity,
           }}
         >
-          ♥
+          {leaf.emoji}
         </span>
       ))}
     </div>

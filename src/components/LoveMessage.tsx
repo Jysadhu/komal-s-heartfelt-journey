@@ -5,6 +5,8 @@ const LoveMessage = () => {
   return (
     <section className="py-24 px-6 bg-background relative overflow-hidden">
       <div className="absolute top-1/3 right-0 w-[400px] h-[400px] bg-primary/5 blur-[150px] rounded-full" />
+      <div className="absolute top-4 left-4 text-3xl opacity-[0.06] animate-sway">🌿</div>
+      <div className="absolute bottom-8 right-8 text-4xl opacity-[0.06] animate-sway" style={{ animationDelay: '1s' }}>🍃</div>
       
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -14,19 +16,19 @@ const LoveMessage = () => {
         className="max-w-2xl mx-auto text-center relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Feather className="w-4 h-4 text-romantic-gold" />
+          <Feather className="w-4 h-4 text-vine-gold" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-12 italic">
-          મારા <span className="gradient-text">દિલ</span>નો પત્ર
+          A Letter From <span className="gradient-text">My Heart</span>
         </h2>
 
-        <div className="glass-card rounded-2xl p-8 md:p-12 text-left space-y-6 border-romantic-gold/10">
+        <div className="glass-card rounded-2xl p-8 md:p-12 text-left space-y-6 border-vine-leaf/10">
           {[
-            "મારી વ્હાલી કોમલ,",
-            "આ ખાસ દિવસે, હું તને જણાવવા માંગુ છું કે તેં મારી દુનિયા કેટલી ઊંડાણથી બદલી નાખી છે. તારા પહેલાં, મારા દિવસો સામાન્ય હતા — પણ તેં એવા રંગોથી રંગી દીધા જે મેં ક્યારેય જોયા ન હતા. તારું દરેક સ્મિત એક સૂર્યોદય જેવું છે જે મારા હૃદયને હૂંફથી ભરી દે છે, તારું દરેક હાસ્ય મેં સાંભળેલી સૌથી મીઠી ધૂન છે.",
-            "તું ફક્ત કોઈ એવી નથી જેને હું પ્રેમ કરું છું — તું મારી શાંતિ છે, મારું સુખ છે, સુંદર વસ્તુઓમાં વિશ્વાસ કરવાનું મારું કારણ છે. જ્યારે હું તારી સાથે હોઉં છું, ત્યારે આખી દુનિયા ઝાંખી પડી જાય છે અને જે બાકી રહે છે તે આપણી વચ્ચેનો જાદુ છે. તું સામાન્યને અસાધારણ બનાવે છે, અને અશક્યને શક્ય લાગે છે.",
-            "હું તારી સાથે રહેવાનું વચન આપું છું — દરેક તોફાનમાં અને દરેક તડકામાં, દરેક આંસુમાં અને દરેક સ્મિતમાં. તું આખા બ્રહ્માંડને લાયક છે, અને હું દરરોજ તને બરાબર એ જ આપવાનો પ્રયત્ન કરીશ. જન્મદિવસ મુબારક, મારા પ્રેમ. આ વર્ષ તારા સુંદર આત્માને લાયક બધો આનંદ લાવે.",
+            "My dearest Komal,",
+            "On this special day, I want you to know just how deeply you've changed my world. Before you, my days were ordinary — but you painted them with colors I never knew existed. Every smile of yours is like a sunrise that fills my heart with warmth, every laugh of yours is the sweetest melody I've ever heard.",
+            "You are not just someone I love — you are my peace, my happiness, my reason to believe in beautiful things. When I'm with you, the whole world fades away and all that remains is the magic between us. You make the ordinary extraordinary, and the impossible feel within reach.",
+            "I promise to be there for you — in every storm and every sunshine, in every tear and every smile. You deserve the universe, and I'll spend every day trying to give you exactly that. Happy Birthday, my love. May this year bring you all the joy your beautiful soul deserves.",
           ].map((text, i) => (
             <motion.p
               key={i}
@@ -35,7 +37,7 @@ const LoveMessage = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 + i * 0.15 }}
               className={`font-body leading-relaxed text-base md:text-lg ${
-                i === 0 ? "text-romantic-gold font-medium" : "text-foreground/80 font-light"
+                i === 0 ? "text-vine-gold font-medium" : "text-foreground/80 font-light"
               }`}
             >
               {text}
@@ -49,7 +51,7 @@ const LoveMessage = () => {
             transition={{ delay: 1 }}
             className="font-script text-3xl md:text-4xl gradient-text text-right mt-8 pt-4 border-t border-border"
           >
-            કાયમ તારો ♥
+            Forever yours ♥
           </motion.p>
         </div>
       </motion.div>
