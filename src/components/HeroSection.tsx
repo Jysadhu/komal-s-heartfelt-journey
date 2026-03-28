@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
 
 const phrases = [
-  "You are the most special part of my life...",
-  "Every moment with you feels like magic...",
-  "My heart beats only for you, Komal ❤️",
+  "તું મારી જિંદગીનો સૌથી ખાસ ભાગ છે...",
+  "તારી સાથેની દરેક પળ જાદુ જેવી લાગે છે...",
+  "મારું દિલ ફક્ત તારા માટે ધબકે છે, કોમલ ❤️",
 ];
 
 const HeroSection = () => {
@@ -37,21 +37,19 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
-      {/* Ambient glow orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-romantic-gold/5 blur-[100px]" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/8 blur-[120px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-romantic-gold/8 blur-[100px]" />
       
-      {/* Decorative particles */}
       <div className="absolute inset-0">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 rounded-full bg-romantic-gold/40"
+            className="absolute w-1 h-1 rounded-full bg-romantic-gold/30"
             style={{
               left: `${15 + i * 15}%`,
               top: `${20 + (i % 3) * 25}%`,
             }}
-            animate={{ opacity: [0.2, 0.8, 0.2], scale: [1, 1.5, 1] }}
+            animate={{ opacity: [0.2, 0.6, 0.2], scale: [1, 1.5, 1] }}
             transition={{ repeat: Infinity, duration: 3, delay: i * 0.5 }}
           />
         ))}
@@ -71,7 +69,7 @@ const HeroSection = () => {
         >
           <Sparkles className="w-4 h-4 text-romantic-gold animate-sparkle" />
           <span className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground">
-            A celebration of love
+            પ્રેમની ઉજવણી
           </span>
           <Sparkles className="w-4 h-4 text-romantic-gold animate-sparkle" style={{ animationDelay: '1s' }} />
         </motion.div>
