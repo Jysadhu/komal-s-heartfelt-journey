@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-interface Heart {
+interface HeartParticle {
   id: number;
   left: number;
   size: number;
@@ -10,16 +10,16 @@ interface Heart {
 }
 
 const FloatingHearts = () => {
-  const [hearts, setHearts] = useState<Heart[]>([]);
+  const [hearts, setHearts] = useState<HeartParticle[]>([]);
 
   useEffect(() => {
-    const generated: Heart[] = Array.from({ length: 20 }, (_, i) => ({
+    const generated: HeartParticle[] = Array.from({ length: 12 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      size: Math.random() * 20 + 10,
-      delay: Math.random() * 10,
-      duration: Math.random() * 6 + 6,
-      opacity: Math.random() * 0.4 + 0.1,
+      size: Math.random() * 14 + 8,
+      delay: Math.random() * 12,
+      duration: Math.random() * 8 + 8,
+      opacity: Math.random() * 0.15 + 0.05,
     }));
     setHearts(generated);
   }, []);
@@ -29,7 +29,7 @@ const FloatingHearts = () => {
       {hearts.map((heart) => (
         <span
           key={heart.id}
-          className="absolute text-romantic-pink animate-float-heart"
+          className="absolute text-primary animate-float-heart"
           style={{
             left: `${heart.left}%`,
             fontSize: `${heart.size}px`,
@@ -38,7 +38,7 @@ const FloatingHearts = () => {
             opacity: heart.opacity,
           }}
         >
-          ❤
+          ♥
         </span>
       ))}
     </div>

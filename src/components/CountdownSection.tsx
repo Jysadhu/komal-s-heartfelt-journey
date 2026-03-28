@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Calendar, Clock } from "lucide-react";
 
-const DOB = new Date(2006, 3, 5); // April 5, 2006
+const DOB = new Date(2006, 3, 5);
 
 const getNextBirthday = () => {
   const now = new Date();
@@ -55,46 +56,59 @@ const CountdownSection = () => {
   ];
 
   return (
-    <section className="py-20 px-6 romantic-gradient-bg">
+    <section className="py-24 px-6 relative overflow-hidden" style={{ background: 'var(--gradient-section)' }}>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 blur-[150px] rounded-full" />
+      
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto text-center"
+        className="max-w-4xl mx-auto text-center relative z-10"
       >
-        <h2 className="font-heading text-3xl md:text-5xl gradient-text mb-4">
-          Counting Every Second ⏳
+        <div className="divider-ornament max-w-xs mx-auto mb-6">
+          <Clock className="w-4 h-4 text-romantic-gold" />
+        </div>
+        
+        <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-3 italic">
+          Counting Every <span className="gradient-text">Second</span>
         </h2>
-        <p className="font-body text-muted-foreground mb-2">
-          Date of Birth: <span className="text-romantic-pink font-semibold">5th April 2006</span>
-        </p>
-        <p className="font-body text-muted-foreground mb-10">
-          Age: <span className="text-romantic-purple font-bold text-2xl">{age}</span> years of being beautiful ✨
-        </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10">
+        <div className="flex items-center justify-center gap-6 mb-12 mt-6">
+          <div className="flex items-center gap-2">
+            <Calendar className="w-4 h-4 text-romantic-gold" />
+            <span className="font-body text-sm text-muted-foreground">
+              Born <span className="text-romantic-gold font-medium">5th April 2006</span>
+            </span>
+          </div>
+          <div className="w-px h-4 bg-border" />
+          <span className="font-body text-sm text-muted-foreground">
+            Age <span className="text-primary font-semibold text-lg">{age}</span>
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
           {blocks.map((block, i) => (
             <motion.div
               key={block.label}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="glass-card rounded-2xl p-6 animate-pulse-glow"
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              className="glass-card rounded-2xl p-6 group hover:border-primary/20 transition-colors duration-500"
             >
-              <span className="font-heading text-4xl md:text-5xl gradient-text block">
+              <span className="font-heading text-4xl md:text-5xl gradient-text block font-light">
                 {String(block.value).padStart(2, "0")}
               </span>
-              <span className="font-body text-sm text-muted-foreground mt-1 block">
+              <span className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mt-2 block">
                 {block.label}
               </span>
             </motion.div>
           ))}
         </div>
 
-        <p className="font-body text-sm text-muted-foreground">
-          Until your next birthday 🎂
+        <p className="font-body text-xs text-muted-foreground tracking-wider uppercase">
+          Until your next birthday ✦
         </p>
       </motion.div>
     </section>
