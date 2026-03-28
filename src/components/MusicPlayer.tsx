@@ -1,15 +1,10 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 
 const MusicPlayer = () => {
   const [isMuted, setIsMuted] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
-
-  useEffect(() => {
-    // Create a simple ambient tone using Web Audio API as fallback
-    // Since we can't host actual audio files, we'll use a placeholder approach
-  }, []);
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
@@ -33,10 +28,10 @@ const MusicPlayer = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
         onClick={toggleMute}
-        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary text-primary-foreground flex items-center justify-center glow-effect transition-all hover:scale-110"
+        className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full border border-romantic-gold/30 bg-muted/80 backdrop-blur-md text-foreground flex items-center justify-center transition-all duration-300 hover:border-romantic-gold/50 hover:scale-110"
         aria-label={isMuted ? "Unmute music" : "Mute music"}
       >
-        {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+        {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
       </motion.button>
     </>
   );

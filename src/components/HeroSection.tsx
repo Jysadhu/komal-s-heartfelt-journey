@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Sparkles } from "lucide-react";
 
 const phrases = [
   "You are the most special part of my life...",
@@ -35,40 +36,67 @@ const HeroSection = () => {
   }, [displayText, isDeleting, currentPhrase]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center romantic-gradient-bg overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_hsl(340_65%_55%_/_0.1),_transparent_70%)]" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
+      {/* Ambient glow orbs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-[120px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-romantic-gold/5 blur-[100px]" />
+      
+      {/* Decorative particles */}
+      <div className="absolute inset-0">
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-romantic-gold/40"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{ opacity: [0.2, 0.8, 0.2], scale: [1, 1.5, 1] }}
+            transition={{ repeat: Infinity, duration: 3, delay: i * 0.5 }}
+          />
+        ))}
+      </div>
       
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        transition={{ duration: 1.4, ease: "easeOut" }}
         className="relative z-10 text-center px-6"
       >
         <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.3, type: "spring", stiffness: 100 }}
-          className="text-6xl md:text-8xl mb-6"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 80 }}
+          className="flex items-center justify-center gap-2 mb-8"
         >
-          🎂
+          <Sparkles className="w-4 h-4 text-romantic-gold animate-sparkle" />
+          <span className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground">
+            A celebration of love
+          </span>
+          <Sparkles className="w-4 h-4 text-romantic-gold animate-sparkle" style={{ animationDelay: '1s' }} />
         </motion.div>
 
-        <h1 className="font-script text-5xl md:text-7xl lg:text-8xl gradient-text mb-4 leading-tight">
+        <h1 className="font-script text-5xl md:text-7xl lg:text-8xl gradient-text mb-3 leading-tight">
           Happy Birthday
         </h1>
-        <motion.p
+        
+        <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="font-script text-4xl md:text-6xl text-romantic-pink mb-8"
         >
-          Komal ❤️
-        </motion.p>
+          <p className="font-heading text-4xl md:text-6xl font-light text-foreground mb-2 italic">
+            Komal
+          </p>
+          <div className="divider-ornament max-w-xs mx-auto mt-4 mb-8">
+            <span className="text-romantic-gold text-sm">✦</span>
+          </div>
+        </motion.div>
 
-        <div className="h-16 flex items-center justify-center">
-          <p className="font-body text-lg md:text-xl text-muted-foreground italic">
+        <div className="h-14 flex items-center justify-center">
+          <p className="font-body text-base md:text-lg text-muted-foreground font-light tracking-wide">
             {displayText}
-            <span className="animate-pulse text-romantic-pink">|</span>
+            <span className="animate-pulse text-primary ml-0.5">|</span>
           </p>
         </div>
 
@@ -76,15 +104,16 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
-          className="mt-12"
+          className="mt-16"
         >
-          <motion.span
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="inline-block text-2xl text-romantic-lavender"
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+            className="flex flex-col items-center gap-1"
           >
-            ↓
-          </motion.span>
+            <span className="text-xs text-muted-foreground tracking-widest uppercase font-body">Scroll</span>
+            <div className="w-px h-8 bg-gradient-to-b from-romantic-gold/50 to-transparent" />
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>

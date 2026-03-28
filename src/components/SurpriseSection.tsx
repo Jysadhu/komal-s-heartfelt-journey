@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback } from "react";
 import confetti from "canvas-confetti";
-import { Gift, Heart, X } from "lucide-react";
+import { Gift, Heart, X, Sparkles } from "lucide-react";
 
 const SurpriseSection = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ const SurpriseSection = () => {
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.7 },
-        colors: ["#e84393", "#a855f7", "#ec4899", "#f472b6", "#c084fc"],
+        colors: ["#c0392b", "#d4a574", "#e74c3c", "#f1c40f", "#c084fc"],
         shapes: [heartShape, "circle"],
       });
       confetti({
@@ -28,7 +28,7 @@ const SurpriseSection = () => {
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.7 },
-        colors: ["#e84393", "#a855f7", "#ec4899", "#f472b6", "#c084fc"],
+        colors: ["#c0392b", "#d4a574", "#e74c3c", "#f1c40f", "#c084fc"],
         shapes: [heartShape, "circle"],
       });
       if (Date.now() < end) requestAnimationFrame(frame);
@@ -42,26 +42,32 @@ const SurpriseSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 romantic-gradient-bg">
+    <section className="py-24 px-6 relative overflow-hidden" style={{ background: 'var(--gradient-section)' }}>
+      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-romantic-gold/3 blur-[150px] rounded-full" />
+      
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="max-w-2xl mx-auto text-center"
+        className="max-w-2xl mx-auto text-center relative z-10"
       >
-        <h2 className="font-heading text-3xl md:text-5xl gradient-text mb-8">
-          A Little Surprise 🎁
+        <div className="divider-ornament max-w-xs mx-auto mb-6">
+          <Sparkles className="w-4 h-4 text-romantic-gold" />
+        </div>
+        
+        <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-10 italic">
+          A Little <span className="gradient-text">Surprise</span>
         </h2>
 
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
-          className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-primary text-primary-foreground font-body font-semibold text-lg glow-effect animate-pulse-glow transition-all"
+          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-romantic-gold/30 bg-muted/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-romantic-gold/50 hover:bg-muted"
         >
-          <Gift className="w-6 h-6" />
-          Click for a Surprise 🎁
+          <Gift className="w-5 h-5 text-romantic-gold" />
+          Open Your Gift
         </motion.button>
       </motion.div>
 
@@ -74,14 +80,14 @@ const SurpriseSection = () => {
             className="fixed inset-0 z-50 flex items-center justify-center p-6"
             onClick={() => setIsOpen(false)}
           >
-            <div className="absolute inset-0 bg-romantic-deep/60 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-background/80 backdrop-blur-md" />
             <motion.div
-              initial={{ scale: 0.5, opacity: 0 }}
+              initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.5, opacity: 0 }}
+              exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative glass-card rounded-3xl p-10 md:p-14 max-w-md w-full text-center z-10"
+              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-romantic-gold/20"
             >
               <button
                 onClick={() => setIsOpen(false)}
@@ -91,31 +97,31 @@ const SurpriseSection = () => {
               </button>
 
               <motion.div
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ repeat: Infinity, duration: 1.5 }}
-                className="text-6xl mb-6 inline-block"
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ repeat: Infinity, duration: 2 }}
+                className="text-5xl mb-6 inline-block"
               >
                 ❤️
               </motion.div>
 
-              <h3 className="font-script text-3xl md:text-4xl gradient-text mb-4">
+              <h3 className="font-script text-3xl md:text-4xl gradient-text mb-3">
                 I Love You So Much
               </h3>
-              <p className="font-script text-2xl text-romantic-pink mb-2">
-                Komal ❤️
+              <p className="font-heading text-2xl text-foreground italic mb-2">
+                Komal
               </p>
-              <p className="font-body text-muted-foreground text-sm mt-4">
-                You mean everything to me. Happy Birthday, my love! 🎂✨
+              <p className="font-body text-muted-foreground text-sm mt-4 font-light leading-relaxed">
+                You mean everything to me. Happy Birthday, my love! ✨
               </p>
 
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex justify-center gap-3 mt-8">
                 {[...Array(5)].map((_, i) => (
                   <motion.div
                     key={i}
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 1, delay: i * 0.2 }}
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.5, delay: i * 0.2 }}
                   >
-                    <Heart className="w-5 h-5 text-romantic-pink fill-current" />
+                    <Heart className="w-4 h-4 text-primary fill-current" />
                   </motion.div>
                 ))}
               </div>
