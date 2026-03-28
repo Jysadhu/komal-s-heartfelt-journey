@@ -7,11 +7,11 @@ import gallery5 from "@/assets/gallery-5.jpg";
 import { Camera } from "lucide-react";
 
 const images = [
-  { src: gallery1, alt: "Rose petals", caption: "Beautiful like you" },
-  { src: gallery2, alt: "Romantic sunset", caption: "Our colors" },
-  { src: gallery3, alt: "Heart lights", caption: "My heart for you" },
-  { src: gallery4, alt: "Flower bouquet", caption: "For you, always" },
-  { src: gallery5, alt: "Starry night", caption: "You're my universe" },
+  { src: gallery1, alt: "Together at the celebration", caption: "Our beautiful moments" },
+  { src: gallery2, alt: "Walking together", caption: "Walking through life with you" },
+  { src: gallery3, alt: "Celebration together", caption: "Every moment is special" },
+  { src: gallery4, alt: "Together at sunset", caption: "You make everything beautiful" },
+  { src: gallery5, alt: "Together always", caption: "Forever by your side" },
 ];
 
 const PhotoGallery = () => {
