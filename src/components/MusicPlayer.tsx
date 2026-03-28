@@ -3,6 +3,9 @@ import { Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 import ReactPlayer from "react-player";
 
+const BACKGROUND_MUSIC_SRC =
+  "https://www.youtube.com/watch?v=DI5iG-Bm9zw";
+
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -22,25 +25,22 @@ const MusicPlayer = () => {
         1. It must be physically on the visible screen.
         2. It must have > 0% opacity (0.01 opacity makes it 1% visible, which is optically invisible to humans but perfectly valid to the browser).
         3. 'controls' helps bypass mobile autoplay-without-controls restrictions.
-        4. We append ?start=45 directly to the URL to reliably start at the chorus.
+        4. Optional: youtube config.start (seconds) if you want a mid-song offset.
       */}
       <div className="fixed bottom-0 right-0 w-32 h-32 opacity-[0.01] pointer-events-none z-0 overflow-hidden">
         <ReactPlayer
-          url="https://www.youtube.com/watch?v=uoLC9u_M-E8?start=45"
+          src={BACKGROUND_MUSIC_SRC}
           playing={isPlaying}
           controls={true}
           width="100%"
           height="100%"
           loop={true}
           volume={1}
-          playsinline={true}
+          playsInline={true}
           config={{
             youtube: {
-              playerVars: { 
-                autoplay: 0,
-                playsinline: 1
-              } as any
-            }
+              rel: 0,
+            },
           }}
         />
       </div>
@@ -59,7 +59,7 @@ const MusicPlayer = () => {
           <Volume2 className="w-5 h-5 text-primary animate-pulse" />
         )}
         <span className="font-body text-sm font-medium tracking-wide drop-shadow-sm">
-          {isPlaying ? "Playing Meri Banogi Kya 🎵" : "Play Our Song 🎵"}
+          {isPlaying ? "Playing Khat × Meri Banogi Kya 🎵" : "Play Our Song 🎵"}
         </span>
       </motion.button>
     </>

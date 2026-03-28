@@ -1,25 +1,59 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
+import gallery1 from "@/assets/gallery-1.png";
+import gallery2 from "@/assets/gallery-2.png";
+import gallery3 from "@/assets/gallery-3.png";
+import gallery4 from "@/assets/gallery-4.png";
+import gallery5 from "@/assets/gallery-5.png";
+import gallery6 from "@/assets/gallery-6.png";
+import gallery7 from "@/assets/gallery-7.png";
 import { Camera } from "lucide-react";
 
 const images = [
-  { src: gallery1, alt: "Walking together", caption: "Walking through life with you" },
-  { src: gallery2, alt: "Celebration together", caption: "Every celebration is special" },
-  { src: gallery3, alt: "Together at sunset", caption: "You make everything beautiful" },
-  { src: gallery4, alt: "Together always", caption: "Forever by your side" },
+  {
+    src: gallery1,
+    alt: "Couple walking hand in hand along a palm-lined path",
+    caption: "Every step together, hand in hand",
+  },
+  {
+    src: gallery2,
+    alt: "Couple standing together in a courtyard with palm trees",
+    caption: "Quiet moments — just us and the open sky",
+  },
+  {
+    src: gallery3,
+    alt: "Couple in traditional dress with a temple in the background",
+    caption: "Blessed to stand beside you, today and always",
+  },
+  {
+    src: gallery4,
+    alt: "Couple arm in arm on a wide path with palms",
+    caption: "Side by side on every road that leads us home",
+  },
+  {
+    src: gallery5,
+    alt: "Couple laughing together under a tree",
+    caption: "Your laugh — my favourite place in the world",
+  },
+  {
+    src: gallery6,
+    alt: "Couple in festive lavender attire with yellow celebration décor",
+    caption: "Dressed for forever — celebrating us, celebrating love",
+  },
+  {
+    src: gallery7,
+    alt: "Couple in festive lehenga and kurta on a decorated red carpet",
+    caption: "Our colours, our joy — the aisle of our sweetest memories",
+  },
 ];
 
 const PhotoGallery = () => {
-  const [selectedImg, setSelectedImg] = useState<{src: string, alt: string, caption: string} | null>(null);
+  const [selectedImg, setSelectedImg] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
   return (
     <section className="py-24 px-6 bg-background relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] radial-glow-primary pointer-events-none" />
-      
+
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -30,19 +64,19 @@ const PhotoGallery = () => {
         <div className="divider-ornament max-w-xs mx-auto mb-6">
           <Camera className="w-5 h-5 text-primary" />
         </div>
-        
+
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground text-center mb-14 italic">
           Gallery of <span className="gradient-text">Love</span>
         </h2>
 
-        <div className="grid grid-cols-2 gap-3 md:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {images.map((img, i) => (
             <motion.div
-              key={i}
+              key={img.alt}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              transition={{ delay: i * 0.08, duration: 0.5 }}
               whileHover={{ scale: 1.03 }}
               onClick={() => setSelectedImg(img)}
               className="relative group rounded-xl overflow-hidden cursor-pointer border border-border hover:border-primary/50 hover:shadow-[0_0_20px_rgba(225,29,72,0.15)] transition-all duration-500"
@@ -56,7 +90,7 @@ const PhotoGallery = () => {
                 className="w-full aspect-[9/16] object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                <p className="font-heading text-white text-lg italic">{img.caption}</p>
+                <p className="font-heading text-white text-sm md:text-lg italic leading-snug">{img.caption}</p>
               </div>
             </motion.div>
           ))}
@@ -89,7 +123,7 @@ const PhotoGallery = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-white mt-6 font-heading text-xl md:text-3xl italic font-light drop-shadow-lg text-center"
+                className="text-white mt-6 font-heading text-xl md:text-3xl italic font-light drop-shadow-lg text-center px-2"
               >
                 {selectedImg.caption}
               </motion.p>
