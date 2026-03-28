@@ -49,10 +49,10 @@ const CountdownSection = () => {
   }, []);
 
   const blocks = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds },
+    { label: "દિવસ", value: timeLeft.days },
+    { label: "કલાક", value: timeLeft.hours },
+    { label: "મિનિટ", value: timeLeft.minutes },
+    { label: "સેકન્ડ", value: timeLeft.seconds },
   ];
 
   return (
@@ -71,19 +71,19 @@ const CountdownSection = () => {
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-3 italic">
-          Counting Every <span className="gradient-text">Second</span>
+          દરેક <span className="gradient-text">પળ</span> ગણી રહ્યો છું
         </h2>
 
         <div className="flex items-center justify-center gap-6 mb-12 mt-6">
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4 text-romantic-gold" />
             <span className="font-body text-sm text-muted-foreground">
-              Born <span className="text-romantic-gold font-medium">5th April 2006</span>
+              જન્મ <span className="text-romantic-gold font-medium">5 એપ્રિલ 2006</span>
             </span>
           </div>
           <div className="w-px h-4 bg-border" />
           <span className="font-body text-sm text-muted-foreground">
-            Age <span className="text-primary font-semibold text-lg">{age}</span>
+            ઉંમર <span className="text-primary font-semibold text-lg">{age}</span>
           </span>
         </div>
 
@@ -108,7 +108,7 @@ const CountdownSection = () => {
         </div>
 
         <p className="font-body text-xs text-muted-foreground tracking-wider uppercase">
-          Until your next birthday ✦
+          તારા આગલા જન્મદિવસ સુધી ✦
         </p>
       </motion.div>
     </section>
