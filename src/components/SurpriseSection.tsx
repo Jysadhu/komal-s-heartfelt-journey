@@ -20,7 +20,7 @@ const SurpriseSection = () => {
         angle: 60,
         spread: 55,
         origin: { x: 0, y: 0.7 },
-        colors: ["#c0392b", "#d4a574", "#e74c3c", "#f1c40f", "#c084fc"],
+        colors: ["#4a9e5f", "#d4a030", "#6bbf7a", "#2d6e3f", "#c084fc"],
         shapes: [heartShape, "circle"],
       });
       confetti({
@@ -28,7 +28,7 @@ const SurpriseSection = () => {
         angle: 120,
         spread: 55,
         origin: { x: 1, y: 0.7 },
-        colors: ["#c0392b", "#d4a574", "#e74c3c", "#f1c40f", "#c084fc"],
+        colors: ["#4a9e5f", "#d4a030", "#6bbf7a", "#2d6e3f", "#c084fc"],
         shapes: [heartShape, "circle"],
       });
       if (Date.now() < end) requestAnimationFrame(frame);
@@ -43,7 +43,7 @@ const SurpriseSection = () => {
 
   return (
     <section className="py-24 px-6 relative overflow-hidden" style={{ background: 'var(--gradient-section)' }}>
-      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-romantic-gold/5 blur-[150px] rounded-full" />
+      <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-vine-gold/5 blur-[150px] rounded-full" />
       
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -53,21 +53,21 @@ const SurpriseSection = () => {
         className="max-w-2xl mx-auto text-center relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Sparkles className="w-4 h-4 text-romantic-gold" />
+          <Sparkles className="w-4 h-4 text-vine-gold" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-10 italic">
-          એક નાનકડું <span className="gradient-text">સરપ્રાઈઝ</span>
+          A Little <span className="gradient-text">Surprise</span>
         </h2>
 
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
-          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-romantic-gold/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-romantic-gold/50 hover:bg-accent"
+          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-vine-leaf/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-vine-leaf/50 hover:bg-accent"
         >
-          <Gift className="w-5 h-5 text-romantic-gold" />
-          તારું ગિફ્ટ ખોલ
+          <Gift className="w-5 h-5 text-vine-gold" />
+          Open Your Gift
         </motion.button>
       </motion.div>
 
@@ -87,7 +87,7 @@ const SurpriseSection = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-romantic-gold/20"
+              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-vine-leaf/20"
             >
               <button
                 onClick={() => setIsOpen(false)}
@@ -101,17 +101,17 @@ const SurpriseSection = () => {
                 transition={{ repeat: Infinity, duration: 2 }}
                 className="text-5xl mb-6 inline-block"
               >
-                ❤️
+                🌿
               </motion.div>
 
               <h3 className="font-script text-3xl md:text-4xl gradient-text mb-3">
-                હું તને ખૂબ પ્રેમ કરું છું
+                I Love You So Much
               </h3>
               <p className="font-heading text-2xl text-foreground italic mb-2">
-                કોમલ
+                Komal
               </p>
               <p className="font-body text-muted-foreground text-sm mt-4 font-light leading-relaxed">
-                તું મારા માટે બધું જ છે. જન્મદિવસ મુબારક, મારા પ્રેમ! ✨
+                You mean everything to me. Happy Birthday, my love! 🌸
               </p>
 
               <div className="flex justify-center gap-3 mt-8">

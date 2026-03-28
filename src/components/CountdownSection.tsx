@@ -49,10 +49,10 @@ const CountdownSection = () => {
   }, []);
 
   const blocks = [
-    { label: "દિવસ", value: timeLeft.days },
-    { label: "કલાક", value: timeLeft.hours },
-    { label: "મિનિટ", value: timeLeft.minutes },
-    { label: "સેકન્ડ", value: timeLeft.seconds },
+    { label: "Days", value: timeLeft.days },
+    { label: "Hours", value: timeLeft.hours },
+    { label: "Minutes", value: timeLeft.minutes },
+    { label: "Seconds", value: timeLeft.seconds },
   ];
 
   return (
@@ -67,23 +67,23 @@ const CountdownSection = () => {
         className="max-w-4xl mx-auto text-center relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Clock className="w-4 h-4 text-romantic-gold" />
+          <Clock className="w-4 h-4 text-vine-gold" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-3 italic">
-          દરેક <span className="gradient-text">પળ</span> ગણી રહ્યો છું
+          Counting Every <span className="gradient-text">Second</span>
         </h2>
 
         <div className="flex items-center justify-center gap-6 mb-12 mt-6">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-romantic-gold" />
+            <Calendar className="w-4 h-4 text-vine-gold" />
             <span className="font-body text-sm text-muted-foreground">
-              જન્મ <span className="text-romantic-gold font-medium">5 એપ્રિલ 2006</span>
+              Born <span className="text-vine-gold font-medium">5th April 2006</span>
             </span>
           </div>
           <div className="w-px h-4 bg-border" />
           <span className="font-body text-sm text-muted-foreground">
-            ઉંમર <span className="text-primary font-semibold text-lg">{age}</span>
+            Age <span className="text-primary font-semibold text-lg">{age}</span>
           </span>
         </div>
 
@@ -107,8 +107,8 @@ const CountdownSection = () => {
           ))}
         </div>
 
-        <p className="font-body text-xs text-muted-foreground tracking-wider uppercase">
-          તારા આગલા જન્મદિવસ સુધી ✦
+        <p className="font-body text-xs text-muted-foreground tracking-wider uppercase flex items-center justify-center gap-2">
+          Until your next birthday <span>🌿</span>
         </p>
       </motion.div>
     </section>
