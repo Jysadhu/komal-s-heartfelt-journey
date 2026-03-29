@@ -127,7 +127,7 @@ const PhotoGallery = () => {
             ))}
             
             {/* Minimalist Pagination Container underneath */}
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 custom-pagination !w-auto flex items-center justify-center gap-3 z-50"></div>
+            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 custom-pagination !w-auto flex items-center justify-center gap-3 z-50"></div>
           </Swiper>
         </div>
       </motion.div>
@@ -178,27 +178,45 @@ const PhotoGallery = () => {
 
         /* Inactive Slides: Grayscale, blurred, faded, no interaction */
         .swiper-slide:not(.swiper-slide-active) {
-          filter: grayscale(100%) blur(2px);
-          opacity: 0.4;
-          pointer-events: none;
+          filter: grayscale(100%) blur(2px) !important;
+          opacity: 0.4 !important;
+          pointer-events: none !important;
+          transform: scale(0.85) !important;
         }
 
         /* Active Slide: Full color, bright, sharp */
         .swiper-slide-active {
-          filter: grayscale(0%) blur(0px);
-          opacity: 1;
-          z-index: 10;
+          filter: grayscale(0%) blur(0px) !important;
+          opacity: 1 !important;
+          z-index: 10 !important;
+          transform: scale(1) !important;
         }
 
         /* Show gorgeous internal caption only on active slide */
         .swiper-slide-active .caption-overlay {
-          opacity: 1;
+          opacity: 1 !important;
         }
         .swiper-slide-active .caption-text {
-          transform: translateY(0);
+          transform: translateY(0) !important;
         }
         .swiper-slide-active .caption-line {
-          transform: scaleX(1);
+          transform: scaleX(1) !important;
+        }
+
+        /* Premium Pagination styling */
+        .swiper-pagination-bullet {
+          width: 8px !important;
+          height: 8px !important;
+          background-color: rgba(255, 255, 255, 0.4) !important;
+          opacity: 1 !important;
+          border-radius: 999px !important;
+          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+        
+        .swiper-pagination-bullet-active {
+          width: 32px !important;
+          background-color: hsl(var(--primary)) !important;
+          box-shadow: 0 0 12px hsl(var(--primary) / 0.6) !important;
         }
 
         .bg-radial-vignette {
