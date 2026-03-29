@@ -11,10 +11,9 @@ import { Camera } from "lucide-react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const images = [
@@ -96,8 +95,7 @@ const PhotoGallery = () => {
               delay: 3000,
               disableOnInteraction: false,
             }}
-            pagination={{ el: '.custom-pagination', clickable: true }}
-            modules={[EffectCoverflow, Pagination, Autoplay]}
+            modules={[EffectCoverflow, Autoplay]}
             className="w-full pt-10 pb-20"
           >
             {images.map((img, i) => (
@@ -125,9 +123,6 @@ const PhotoGallery = () => {
                 </div>
               </SwiperSlide>
             ))}
-            
-            {/* Minimalist Pagination Container underneath */}
-            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 custom-pagination !w-auto flex items-center justify-center gap-3 z-50"></div>
           </Swiper>
         </div>
       </motion.div>
@@ -201,22 +196,6 @@ const PhotoGallery = () => {
         }
         .swiper-slide-active .caption-line {
           transform: scaleX(1) !important;
-        }
-
-        /* Premium Pagination styling */
-        .swiper-pagination-bullet {
-          width: 8px !important;
-          height: 8px !important;
-          background-color: rgba(255, 255, 255, 0.4) !important;
-          opacity: 1 !important;
-          border-radius: 999px !important;
-          transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
-        }
-        
-        .swiper-pagination-bullet-active {
-          width: 32px !important;
-          background-color: hsl(var(--primary)) !important;
-          box-shadow: 0 0 12px hsl(var(--primary) / 0.6) !important;
         }
 
         .bg-radial-vignette {

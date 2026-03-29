@@ -21,11 +21,11 @@ const BirthdayFooter = () => {
           </motion.span>
           by someone who loves you the most
         </p>
-        <p className="font-script text-vine-gold text-xl mt-4 leading-relaxed py-1">
+        <p className="font-script text-primary text-xl mt-4 leading-relaxed py-1">
           Happy Birthday Komal
         </p>
         <div className="divider-ornament max-w-[120px] mx-auto mt-4">
-          <span className="text-vine-leaf/50 text-[10px]">🌿</span>
+          <span className="text-primary/50 text-[10px]">🌿</span>
         </div>
       </motion.div>
     </footer>

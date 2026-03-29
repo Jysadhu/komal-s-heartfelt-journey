@@ -53,7 +53,7 @@ const SurpriseSection = () => {
         className="max-w-2xl mx-auto text-center relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
-          <Sparkles className="w-5 h-5 text-wine-gold" />
+          <Sparkles className="w-5 h-5 text-primary" />
         </div>
         
         <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground mb-10 italic">
@@ -64,9 +64,9 @@ const SurpriseSection = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleClick}
-          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-wine-rose/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground group"
+          className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-primary/30 bg-accent/50 text-foreground font-body font-medium text-base tracking-wide gold-glow transition-all duration-300 hover:border-primary hover:bg-primary hover:text-primary-foreground group shadow-[0_0_20px_rgba(225,29,72,0.15)]"
         >
-          <Gift className="w-5 h-5 text-wine-gold md:group-hover:text-primary-foreground transition-colors" />
+          <Gift className="w-5 h-5 text-primary md:group-hover:text-primary-foreground transition-colors" />
           Open Your Gift
         </motion.button>
       </motion.div>
@@ -87,7 +87,7 @@ const SurpriseSection = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-wine-rose/30 glow-effect"
+              className="relative glass-card rounded-2xl p-10 md:p-14 max-w-md w-full text-center z-10 border-primary/30 glow-effect shadow-[0_0_40px_rgba(225,29,72,0.25)]"
             >
               <button
                 onClick={() => setIsOpen(false)}
