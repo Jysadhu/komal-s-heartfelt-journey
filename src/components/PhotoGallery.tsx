@@ -204,11 +204,6 @@ const PhotoGallery = () => {
           transform: translateY(0);
         }
 
-        /* Cinematic Floor Reflection */
-        .slide-content {
-          -webkit-box-reflect: below 8px linear-gradient(transparent, transparent, rgba(0,0,0,0.15));
-        }
-
         .bg-radial-vignette {
           background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 150%);
         }
