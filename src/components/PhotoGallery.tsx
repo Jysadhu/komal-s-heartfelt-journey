@@ -7,11 +7,11 @@ import gallery4 from "@/assets/gallery-4.png";
 import gallery5 from "@/assets/gallery-5.png";
 import gallery6 from "@/assets/gallery-6.png";
 import gallery7 from "@/assets/gallery-7.png";
-import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { Camera } from "lucide-react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -97,11 +97,7 @@ const PhotoGallery = () => {
               disableOnInteraction: false,
             }}
             pagination={{ el: '.custom-pagination', clickable: true }}
-            navigation={{
-              nextEl: '.custom-next',
-              prevEl: '.custom-prev',
-            }}
-            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+            modules={[EffectCoverflow, Pagination, Autoplay]}
             className="w-full pt-10 pb-20"
           >
             {images.map((img, i) => (
@@ -117,25 +113,21 @@ const PhotoGallery = () => {
                     className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
                   />
                   {/* Subtle vignette for professional photo feel */}
-                  <div className="absolute inset-0 bg-radial-vignette opacity-50 pointer-events-none" />
-                </div>
-                
-                {/* Clean, elegant external caption ONLY for the active slide */}
-                <div className="absolute -bottom-8 left-0 right-0 text-center opacity-0 transition-all duration-700 transform translate-y-4 caption-content">
-                  <p className="font-heading text-primary/90 text-sm md:text-lg italic tracking-wide">{img.caption}</p>
+                  <div className="absolute inset-0 bg-radial-vignette opacity-40 pointer-events-none" />
+                  
+                  {/* Premium internal caption overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 transition-opacity duration-700 flex flex-col justify-end p-6 border-b border-primary/20 caption-overlay">
+                    <p className="font-heading text-white text-lg md:text-2xl italic leading-snug drop-shadow-md transform translate-y-6 transition-transform duration-700 caption-text">
+                      {img.caption}
+                    </p>
+                    <div className="h-1 w-12 bg-primary mt-4 rounded-full origin-left scale-x-0 transition-transform duration-700 delay-150 caption-line" />
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
-
-            {/* Custom Navigation */}
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-12 z-50">
-              <button className="custom-prev w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary/70 hover:bg-primary/5 hover:text-primary transition-all backdrop-blur-sm">
-                <ChevronLeft className="w-5 h-5 flex-shrink-0" />
-              </button>
-              <button className="custom-next w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary/70 hover:bg-primary/5 hover:text-primary transition-all backdrop-blur-sm">
-                <ChevronRight className="w-5 h-5 flex-shrink-0" />
-              </button>
-            </div>
+            
+            {/* Minimalist Pagination Container underneath */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 custom-pagination !w-auto flex items-center justify-center gap-3 z-50"></div>
           </Swiper>
         </div>
       </motion.div>
@@ -198,10 +190,15 @@ const PhotoGallery = () => {
           z-index: 10;
         }
 
-        /* Show caption only on active slide */
-        .swiper-slide-active .caption-content {
+        /* Show gorgeous internal caption only on active slide */
+        .swiper-slide-active .caption-overlay {
           opacity: 1;
+        }
+        .swiper-slide-active .caption-text {
           transform: translateY(0);
+        }
+        .swiper-slide-active .caption-line {
+          transform: scaleX(1);
         }
 
         .bg-radial-vignette {
