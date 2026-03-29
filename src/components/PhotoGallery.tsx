@@ -7,7 +7,15 @@ import gallery4 from "@/assets/gallery-4.png";
 import gallery5 from "@/assets/gallery-5.png";
 import gallery6 from "@/assets/gallery-6.png";
 import gallery7 from "@/assets/gallery-7.png";
-import { Camera } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight } from "lucide-react";
+
+// Swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 const images = [
   {
@@ -51,7 +59,7 @@ const PhotoGallery = () => {
   const [selectedImg, setSelectedImg] = useState<{ src: string; alt: string; caption: string } | null>(null);
 
   return (
-    <section className="py-24 px-6 bg-background relative overflow-hidden">
+    <section className="py-24 px-0 overflow-hidden relative" style={{ background: "linear-gradient(to bottom, transparent, rgba(14,165,233,0.03), transparent)" }}>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] radial-glow-primary pointer-events-none" />
 
       <motion.div
@@ -59,44 +67,80 @@ const PhotoGallery = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="max-w-5xl mx-auto relative z-10"
+        className="w-full relative z-10"
       >
         <div className="divider-ornament max-w-xs mx-auto mb-6">
           <Camera className="w-5 h-5 text-primary" />
         </div>
 
-        <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground text-center mb-14 italic">
+        <h2 className="font-heading text-3xl md:text-5xl font-light text-foreground text-center mb-16 italic drop-shadow-md">
           Gallery of <span className="gradient-text">Love</span>
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-          {images.map((img, i) => (
-            <motion.div
-              key={img.alt}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
-              whileHover={{ scale: 1.03 }}
-              onClick={() => setSelectedImg(img)}
-              className="relative group rounded-xl overflow-hidden cursor-pointer border border-border hover:border-primary/50 hover:shadow-[0_0_20px_rgba(225,29,72,0.15)] transition-all duration-500"
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                loading="lazy"
-                width={800}
-                height={800}
-                className="w-full aspect-[9/16] object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5">
-                <p className="font-heading text-white text-sm md:text-lg italic leading-snug">{img.caption}</p>
-              </div>
-            </motion.div>
-          ))}
+        {/* SWIPER 3D SLIDER */}
+        <div className="w-full max-w-[100vw] px-4 md:px-0 mx-auto">
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 30,
+              stretch: 0,
+              depth: 250,
+              modifier: 1,
+              slideShadows: true,
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            pagination={{ el: '.custom-pagination', clickable: true }}
+            navigation={{
+              nextEl: '.custom-next',
+              prevEl: '.custom-prev',
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+            className="w-full pt-10 pb-20"
+          >
+            {images.map((img, i) => (
+              <SwiperSlide key={i} className="w-[280px] md:w-[450px] aspect-[9/16] pb-12">
+                <div 
+                  className="w-full h-full relative group rounded-2xl overflow-hidden cursor-pointer shadow-2xl transition-all duration-[800ms] slide-content"
+                  onClick={() => setSelectedImg(img)}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                  />
+                  {/* Subtle vignette for professional photo feel */}
+                  <div className="absolute inset-0 bg-radial-vignette opacity-50 pointer-events-none" />
+                </div>
+                
+                {/* Clean, elegant external caption ONLY for the active slide */}
+                <div className="absolute -bottom-8 left-0 right-0 text-center opacity-0 transition-all duration-700 transform translate-y-4 caption-content">
+                  <p className="font-heading text-primary/90 text-sm md:text-lg italic tracking-wide">{img.caption}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+
+            {/* Custom Navigation */}
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex items-center gap-12 z-50">
+              <button className="custom-prev w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary/70 hover:bg-primary/5 hover:text-primary transition-all backdrop-blur-sm">
+                <ChevronLeft className="w-5 h-5 flex-shrink-0" />
+              </button>
+              <button className="custom-next w-12 h-12 rounded-full border border-primary/20 flex items-center justify-center text-primary/70 hover:bg-primary/5 hover:text-primary transition-all backdrop-blur-sm">
+                <ChevronRight className="w-5 h-5 flex-shrink-0" />
+              </button>
+            </div>
+          </Swiper>
         </div>
       </motion.div>
 
+      {/* FULLSCREEN LIGHTBOX */}
       <AnimatePresence>
         {selectedImg && (
           <motion.div
@@ -104,33 +148,71 @@ const PhotoGallery = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImg(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm cursor-zoom-out"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-background/98 p-4 backdrop-blur-xl cursor-zoom-out"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              initial={{ scale: 0.95, opacity: 0, y: 10 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 10 }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
               className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center outline-none"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={selectedImg.src}
                 alt={selectedImg.alt}
-                className="max-w-full max-h-[75vh] md:max-h-[85vh] aspect-[9/16] rounded-lg shadow-2xl object-cover border border-primary/20 glow-effect bg-black/10"
+                className="max-w-full max-h-[75vh] md:max-h-[80vh] aspect-[9/16] rounded-sm shadow-2xl object-cover"
               />
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-white mt-6 font-heading text-xl md:text-3xl italic font-light drop-shadow-lg text-center px-2"
+                transition={{ delay: 0.3 }}
+                className="mt-8 text-center max-w-2xl px-4"
               >
-                {selectedImg.caption}
-              </motion.p>
+                <p className="text-foreground/80 font-heading text-lg md:text-2xl font-light tracking-widest uppercase text-sm">
+                  {selectedImg.caption}
+                </p>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+      
+      {/* Global Swiper Overrides for Professional Editorial Look */}
+      <style>{`
+        .swiper-slide {
+          transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Inactive Slides: Grayscale, blurred, faded, no interaction */
+        .swiper-slide:not(.swiper-slide-active) {
+          filter: grayscale(100%) blur(2px);
+          opacity: 0.4;
+          pointer-events: none;
+        }
+
+        /* Active Slide: Full color, bright, sharp */
+        .swiper-slide-active {
+          filter: grayscale(0%) blur(0px);
+          opacity: 1;
+          z-index: 10;
+        }
+
+        /* Show caption only on active slide */
+        .swiper-slide-active .caption-content {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Cinematic Floor Reflection */
+        .slide-content {
+          -webkit-box-reflect: below 8px linear-gradient(transparent, transparent, rgba(0,0,0,0.15));
+        }
+
+        .bg-radial-vignette {
+          background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.8) 150%);
+        }
+      `}</style>
     </section>
   );
 };

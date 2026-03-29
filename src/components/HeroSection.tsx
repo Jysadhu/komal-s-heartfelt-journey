@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import { Leaf } from "lucide-react";
 
 const phrases = [
@@ -12,6 +12,15 @@ const phrases = [
 
 const HeroSection = () => {
   const [currentPhrase, setCurrentPhrase] = useState(0);
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "150%"]);
+  const opacityText = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -21,16 +30,16 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
-      {/* Floating Circles decorations */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden w-full" style={{ background: 'var(--gradient-hero)' }}>
+      {/* Floating Circles decorations with Parallax */}
+      <motion.div style={{ y: yBackground }} className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[10%] w-[600px] h-[600px] radial-glow-primary animate-float-circle"></div>
         <div className="absolute top-[30%] right-[5%] w-[500px] h-[500px] radial-glow-gold animate-float-circle" style={{ animationDelay: '2s' }}></div>
         <div className="absolute bottom-[20%] left-[20%] w-[700px] h-[700px] radial-glow-primary animate-float-circle" style={{ animationDelay: '4s' }}></div>
-      </div>
+      </motion.div>
       
-      <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] radial-glow-primary pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] radial-glow-gold pointer-events-none translate-x-1/2 translate-y-1/2" />
+      <motion.div style={{ y: yBackground }} className="absolute top-1/4 left-1/4 w-[800px] h-[800px] radial-glow-primary pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      <motion.div style={{ y: yBackground }} className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] radial-glow-gold pointer-events-none translate-x-1/2 translate-y-1/2" />
       
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(8)].map((_, i) => (
@@ -51,6 +60,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 40, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 1.8, ease: "easeOut" }}
+        style={{ y: yText, opacity: opacityText }}
         className="relative z-10 text-center px-6 max-w-4xl mx-auto"
       >
         <motion.div

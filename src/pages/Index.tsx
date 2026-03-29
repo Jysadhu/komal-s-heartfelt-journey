@@ -7,6 +7,7 @@ import PhotoGallery from "@/components/PhotoGallery";
 import SurpriseSection from "@/components/SurpriseSection";
 import MusicPlayer from "@/components/MusicPlayer";
 import BirthdayFooter from "@/components/BirthdayFooter";
+import MagicalCursor from "@/components/MagicalCursor";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,6 +16,7 @@ const Index = () => {
 
   return (
     <div className="relative overflow-x-hidden" onDoubleClick={() => setShowSecret(true)}>
+      <MagicalCursor />
       <FloatingHearts />
       <MusicPlayer />
       <HeroSection />
